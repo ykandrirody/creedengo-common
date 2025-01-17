@@ -318,9 +318,10 @@ No need to execute the 2 shell scripts (and commits / pushes) in "static" way to
     2. **add above an empty `Unreleased`** section with sub-sections (`Added`, `Changed` and `Deleted`)
     3. **add a new section in the list at the bottom** of file with new version
     4. **commit** these modifications
-2. create locally a tag with the previous used version
+2. **upgrade `README.md`** : upgrade if needed and if version compatibility matrix is described
+3. create locally a tag with the previous used version
    1. **execute `git tag <X.Y.Z>`
-3. push new tag created previously :
+4. push new tag created previously :
    1. locally, **go to and update `main`** branch
    2. **execute `git push --tags`** to push new previously created tag
 
@@ -340,19 +341,20 @@ This is the use case for all plugin repositories except `creedengo` repository.
     2. **add above an empty `Unreleased`** section with sub-sections (`Added`, `Changed` and `Deleted`)
     3. **add a new section in the list at the bottom** of file with new version
     4. **commit** these modifications
-3. prepare locally next release and next snapshot :
+3. **upgrade `README.md`** : upgrade if needed and if version compatibility matrix is described
+4. prepare locally next release and next snapshot :
    1. **execute `tool_release_1_prepare.sh`** script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag)
    2. DON'T PUSH, just **check locally** these 2 commits and tag
-4. create and push new local branch : 
+5. create and push new local branch :
    1. **execute `tool_release_2_branch.sh`** to create and push a new branch with that release and SNAPSHOT
    2. **check on github** that this new branch is created and pushed
-5. create new github PR :
+6. create new github PR :
    1. on github, **create a new PR** based on this new branch to `main` branch
    2. **check Action** launch and result for this new PR
-6. merge PR
+7. merge PR
    1. **merge PR** on `main` branch with `Create a merge commit` option
    2. **check Action** launch and result on `main` branch
-7. push new tag created previously :
+8. push new tag created previously :
    1. locally, **go to and update `main`** branch
    2. **execute `git push --tags`** to push new previously created tag
    3. **check Action** launch and result on new tag
