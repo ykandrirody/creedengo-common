@@ -305,7 +305,9 @@ mvn license:format
 
 ### Create a release on DYNAMIC versionning system module
 
-This is the use case for `creedengo` repository
+For now, this is ONLY the use case for `creedengo` repository.
+Why dynamic ? because the versionning is dynamic in this repository.
+No need to execute the 2 shell scripts (and commits / pushes) in "static" way to manage the versionning.
 
 1. **upgrade `CHANGELOG.md`** : add release notes for next release
     1. **Replace `Unreleased` title** with the new version like `Release X.Y.Z` and the date
@@ -324,7 +326,7 @@ This is the use case for `creedengo` repository
 
 ### Create a release on STATIC versionning system module
 
-This is the use case for all plugin repositories except `creedengo` repository
+This is the use case for all plugin repositories except `creedengo` repository.
 
 1. IF **new release wanted** is a **major** or **minor** version (`X` or `Y` in `X.Y.Z`)
    1. **THEN** **modify the old version** to the new version in **all XML/YML files**
