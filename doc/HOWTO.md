@@ -320,7 +320,7 @@ No need to execute the 2 shell scripts (and commits / pushes) in "static" way to
     4. **commit** these modifications
 2. **upgrade `README.md`** : upgrade if needed and if version compatibility matrix is described
 3. create locally a tag with the previous used version
-   1. **execute `git tag <X.Y.Z>`
+   1. execute `git tag <X.Y.Z>`
 4. push new tag created previously :
    1. locally, **go to and update `main`** branch
    2. **execute `git push --tags`** to push new previously created tag
@@ -448,11 +448,15 @@ Launch GPG KeyChain software and follow these steps :
   - `Passphrase` / `password` : a passphrase to protect your private key
   - `expiration date` : never
   - other options : default values
-- publish your public key to a key server by clicking on `Send` button
-  - (if you open settings option menu, you can see that key server is `hkps://keys.openpgp.org`)
 - get public key (and private key if needed), by clicking on `Export` button
   - you can export public key to a local file (with `.asc` extension)
   - you can also export private key if option checked in export form
+- publish your public key to a key server by clicking on `Send` button
+  - (if you open settings option menu, you can see that key server is `hkps://keys.openpgp.org`)
+  - if error when publishing, try another server :
+    - https://keyserver.ubuntu.com/
+    - insert manually the public key
+    - then check the key existence with defined email
 
 #### How to install and use GPG ? METHOD 2 : command line tool
 
