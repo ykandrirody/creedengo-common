@@ -148,37 +148,47 @@ Once your local environment is running, you can pick a rule waiting to be implem
 
 Many ways to do this : 
 
-- first and preferred way : pick a plugin in the table bottom and check if a rule is waiting to be implemented.
+- first way : choose a rule in following tables that is ready to implement (🚀) or has to be analyzed (❓)
+   - [Web rules](https://github.com/green-code-initiative/creedengo-rules-specifications/blob/main/RULES.md)
+   - [Android (Java) rules](https://github.com/green-code-initiative/ecocode-android/blob/main/android-plugin/RULES.md)
+   - [iOS (Swift) rules](https://github.com/green-code-initiative/creedengo-ios/blob/main/RULES.md)
+- second way : pick a plugin in the table bottom and check if a rule is waiting to be implemented.
 
-| Plugin Language | Plugin Rules Ideas                                                                                                                                                                                                                              |
-|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Plugin Language | Plugin Rules Ideas                                                                                                                                                                                                                                |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Java            | [💡 rule-idea](https://github.com/green-code-initiative/creedengo-java/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea)                                                                                                               |
 | JavaScript      | [🗃️ rule or 💡 rule-idea](https://github.com/green-code-initiative/creedengo-javascript/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%92%A1+rule-idea%22%2C%22%F0%9F%97%83%EF%B8%8F+rule%22+label%3A%22%F0%9F%8F%86+challenge+%F0%9F%8F%86%22) |
 | HTML            | [🗃️ rule or 💡 rule-idea](https://github.com/green-code-initiative/creedengo-html/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%92%A1+rule-idea%22%2C%22%F0%9F%97%83%EF%B8%8F+rule%22+label%3A%22%F0%9F%8F%86+challenge+%F0%9F%8F%86%22)       |
-|                 |                                                                                                                                                                                                                                                 |
+|                 |                                                                                                                                                                                                                                                   |
 
-- second way : choose a rule in following tables 
-  - [Web rules](https://github.com/green-code-initiative/creedengo/blob/main/RULES.md)
-  - [Android (Java) rules](https://github.com/green-code-initiative/creedengo-android/blob/main/android-plugin/RULES.md)
-  - [iOS (Swift) rules](https://github.com/green-code-initiative/creedengo-ios/blob/main/RULES.md)
-- third way : check rule ideas in Kanban project board [here](https://github.com/orgs/green-code-initiative/projects/1) and select implementable (or hardly implementable) ticket, and create an issue in the right language repositoyr
-- fourth way : Go and give a hand to the [spotters team](https://github.com/green-code-initiative/creedengo-challenge/blob/main/spotters.md) who will give you some rules to implement
+- third way : pick a idea rule (not yet analyzed) and check if a rule is waiting to be implemented.
+
+| Repository          | Plugin Rules Ideas                                                                                                                       |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| creedengo-common    | [💡 rule-idea](https://github.com/green-code-initiative/creedengo-common/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea)    |
+| creedengo-challenge | [💡 rule-idea](https://github.com/green-code-initiative/creedengo-challenge/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea) |
+|                     |                                                                                                                                          |
+
+- fourth way : check rule ideas in Kanban project board [here](https://github.com/orgs/green-code-initiative/projects/1) and select implementable (or hardly implementable) ticket, and create an issue in the right language repositoyr
+- fifth way : Go and give a hand to the [spotters team](https://github.com/green-code-initiative/creedengo-challenge/blob/main/spotters.md) who will give you some rules to implement
+
+**IMPORTANT** : before implementing a rule, please check if the rule is not already implemented in another language and the id already exists in `RULES.md` file or in `creedengo-rules-specifications` repository. If the rule is already implemented, please use the same id.
 
 ## Check `Definition Of Done` for new rule implementation
 
 For a new rule implementation, we strongly recommend you to follow this check-list :
 
-- [ ] Check if rule doesn't exist in our referential rules list yet (`RULES.md` file or `creedengo-rules-specifications` module in `creedengo` repository)
-- [ ] Create PR on the `creedengo` repository to add the new rule definition (`creedengo-rules-specifications`)
+- [ ] Check if rule doesn't exist in our referential rules list yet (`RULES.md` file of `creedengo-rules-specifications` repository)
+- [ ] Create PR on the `creedengo-rules-specifications` repository to add the new rule definition
   - [ ] To choose the new rule id :
     - [ ] if rule is already existing in `RULES.md` file or in `creedengo-rules-specifications` module, please use the given rule id
     - [ ] if rule doesn't already exist in `RULES.md` file or in `creedengo-rules-specifications` module, please use a random number between 1000 and 1500 (ex : "EC1289") and use it (later, you will be asked to change it)
   - [ ] You can use SNAPSHOT version of `creedengo-rules-specifications` during your local rule implementation to go forward
-- [ ] Implement rule in your local specific language repository with a reference to local SNAPSHOT of `creedengo-rules-specifications` module (previously, install it locally with maven command)
-- [ ] Write Unit tests (and maximize code coverage)
-- [ ] Update `RULES.md` file
-- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
+- [ ] Implement rule in your local specific language repository with a reference to local SNAPSHOT of `creedengo-rules-specifications` (previously, install it locally with maven command)
+  - [ ] Write Unit tests (and maximize code coverage)
+  - [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
 - [ ] Create PR on the real test project to add a triggering case (check [local procedure](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/starter-pack.md#start-local-environment))
+  - [ ] WARNING Java an Python plugin : check above (`Specific real test project for Python and Java plugin`)
 - [ ] Fix potential SonarCloud issues / out-of-date warnings (report is sent after creating PR)
 - [ ] In next review step, reviewer will ask you to use a specific id rule if you have chosen a random one
 
@@ -189,6 +199,27 @@ For a new rule implementation, we strongly recommend you to follow this check-li
 
 > Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, PHP and JAVA) in order to test directly inside Sonarqube that the rule has been implemented.
 > To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: <https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/>
+
+## Specific real test project for Python and Java plugin
+
+These two plugins doesn't have a specific test project yet in a separated repository.
+We are deploying in all plugins, a new system to make real tests based on integration tests inside each plugin.
+The purpose of this system is to be independent of Docker to launch integration tests.
+Now, we needn't Docker to launch integration tests.
+We can use a simple maven command to launch a Sonarqube instance and play the integration tests :
+```sh
+mvn clean verify
+```
+If you want to keep your local Sonarqube instance, you can use this maven command (using a maven profile) :
+```sh
+mvn clean verify -Pkeep-running
+```
+
+You can find this new real tests system inside `src/it` directory :
+- sub-directory `java` contains :
+  - system source-code
+  - the only one integration test that will be used to launch the integration tests : `GCIRulesIT.java`
+- sub-directory `test-projects` contains the real test projects (the old one that was in a separated repository)
 
 # Publish your work
 
