@@ -19,6 +19,7 @@
   - [Choose the rule you want to implement](#choose-the-rule-you-want-to-implement)
   - [Check `Definition Of Done` for new rule implementation](#check-definition-of-done-for-new-rule-implementation)
   - [Test your rule implementation](#test-your-rule-implementation)
+  - [Specific real test project for Python and Java plugin](#specific-real-test-project-for-python-and-java-plugin)
 - [Publish your work](#publish-your-work)
   - [Commit your code](#commit-your-code)
   - [Open pull request](#open-pull-request)

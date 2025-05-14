@@ -20,7 +20,7 @@
       - [Maintainer, write permission](#maintainer-write-permission)
       - [Contributor, NO write permissions](#contributor-no-write-permissions)
     - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
-    - [HOWTO Depreciate an existing rule](#howto-depreciate-an-existing-rule)
+    - [HOWTO Deprecate an existing rule](#howto-deprecate-an-existing-rule)
       - [STEP 1 : deprecate rule](#step-1--deprecate-rule)
       - [STEP 2 : remove rule](#step-2--remove-rule)
     - [HOWTO manage license inside code](#howto-manage-license-inside-code)
@@ -28,7 +28,6 @@
   - [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
     - [Create a release on DYNAMIC versionning system module](#create-a-release-on-dynamic-versionning-system-module)
     - [Create a release on STATIC versionning system module](#create-a-release-on-static-versionning-system-module)
-  - [HOWTO publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
     - [New release from scratch](#new-release-from-scratch)
     - [New release of existing plugin](#new-release-of-existing-plugin)
   - [HOWTO publish a new version of creedengo-rules-specifications on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central)
@@ -78,6 +77,11 @@ Maven will download the required dependencies.
 ```
 
 Each plugin is generated in its own `<plugin>/target` directory, but they are also copied to the `lib` directory.
+
+Next, check the tests (unit tests and integration tests) are ok :
+```sh
+mvn verify
+```
 
 ### HOWTO install SonarQube dev environment
 
