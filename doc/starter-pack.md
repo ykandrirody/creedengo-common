@@ -133,9 +133,11 @@ You will find all steps to start and configure your local Sonarqube dev Environm
 
 - 1st step - build your local plugin: <https://github.com/green-code-initiative/creedengo-common/blob/main/doc/HOWTO.md#howto-build-the-sonarqube-creedengo-plugins>
 - 2nd step - launch local Sonarqube (with installation of previous local plugin built) : <https://github.com/green-code-initiative/creedengo-common/blob/main/doc/HOWTO.md#howto-install-sonarqube-dev-environment>
-- 3rd step - check that local environment is running perfectly : choose one of repositories with suffix "test-project" (ex : <https://github.com/green-code-initiative/creedengo-php-test-project/tree/main>)
-  - next, launch script `tool_send_to_sonar.sh` (using previous security token created on the second step)
-  - finally, open local SonarQube GUI (<http://localhost:9000>) to verify if the project alone raises creedengo errors
+- 3rd step - check that local environment is running perfectly :
+  - choose one of repositories with suffix "test-project" (ex : <https://github.com/green-code-initiative/creedengo-php-test-project/tree/main>) for other languages than Java and Python
+    - next, launch script `tool_send_to_sonar.sh` (using previous security token created on the second step)
+    - finally, open local SonarQube GUI (<http://localhost:9000>) to verify if the project alone raises creedengo errors
+  - For python an Java plugin, please check bottom, ("Specific real test project for Python and Java plugin" part ), there is no test project anymore. It is inside the plugin under `src/it/test-projects` directory
 
 # Implement a new rule
 
