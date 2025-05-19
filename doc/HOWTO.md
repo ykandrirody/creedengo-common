@@ -149,7 +149,9 @@ sysctl -w vm.max_map_count=262144
 
 ##### Generate access token
 
-When you are connected, generate a new token on `My Account -> Security -> Generate Tokens`
+When you are connected,
+- generate a new token on `My Account -> Security -> Generate Tokens` with "User token" type
+- copy it for following steps
 
 ![Administrator menu](resources/adm-menu.png)
 ![Security tab](resources/security-tab.png)
