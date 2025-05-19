@@ -1,11 +1,14 @@
 #!/bin/bash
 
+###
+### tool to check requirements
+### --debug : enable debug mode
+###
+
 . _core.sh
 
 debug "config - JAVA_VERSION_MIN : $JAVA_VERSION_MIN"
 debug "config - JAVA_VERSION_MAX : $JAVA_VERSION_MAX"
-# debug "JAVA_CLASS_VERSION_MIN : $JAVA_CLASS_VERSION_MIN"
-# debug "JAVA_CLASS_VERSION_MAX : $JAVA_CLASS_VERSION_MAX"
 debug "config - MAVEN_VERSION_MIN : $MAVEN_VERSION_MIN"
 debug "config - MAVEN_VERSION_MAX : $MAVEN_VERSION_MAX"
 
