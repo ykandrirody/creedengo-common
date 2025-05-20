@@ -78,6 +78,8 @@ please check following section
 
 This section is to help you to install and configure your first environment to develop with us !!!
 
+We advise you to use [Sdkman.io](https://sdkman.io/) to manage tools versions of your tools, locally. This tool will install different versions as you want.
+
 ## Requirements
 
 - `Docker` : <https://docs.docker.com/get-docker/>
