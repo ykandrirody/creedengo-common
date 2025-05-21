@@ -28,9 +28,10 @@ jobs:
     - name: Install jq
       run: |
         $ProgressPreference = 'SilentlyContinue'
-        Invoke-WebRequest -Uri "https://github.com/jqlang/jq/releases/download/jq-1.7/jq-win64.exe" -OutFile "jq.exe"
-        Move-Item -Path "jq.exe" -Destination "C:\Program Files\jq\jq.exe" -Force
-        $env:Path += ";C:\Program Files\jq"
+        $jqPath = "$env:RUNNER_TEMP\jq"
+        New-Item -ItemType Directory -Force -Path $jqPath
+        Invoke-WebRequest -Uri "https://github.com/jqlang/jq/releases/download/jq-1.7/jq-win64.exe" -OutFile "$jqPath\jq.exe"
+        $env:Path += ";$jqPath"
 
     - name: Run requirements check
       run: |
