@@ -42,18 +42,6 @@ jobs:
         Move-Item -Path "jq.exe" -Destination "C:\Program Files\jq\jq.exe" -Force
         $env:Path += ";C:\Program Files\jq"
 
-    - name: Create config.txt
-      run: |
-        @"
-# debug mode on/off
-DEBUG=0
-# versions
-JAVA_VERSION_MIN=17.0.0
-JAVA_VERSION_MAX=17.0.999
-MAVEN_VERSION_MIN=3.5.2
-MAVEN_VERSION_MAX=3.9.9
-"@ | Out-File -FilePath "tools/check_requirements/config.txt" -Encoding ASCII
-
     - name: Run requirements check
       run: |
         cd tools/check_requirements
