@@ -17,9 +17,21 @@
 - [Implement a new rule](#implement-a-new-rule)
   - [Requirements](#requirements-1)
   - [Choose the rule you want to implement](#choose-the-rule-you-want-to-implement)
-  - [Check `Definition Of Done` for new rule implementation](#check-definition-of-done-for-new-rule-implementation)
+  - [FIRST, Declare the new rule / language in `creedengo-rules-specifications` repository](#first-declare-the-new-rule--language-in-creedengo-rules-specifications-repository)
+    - [Choose the ID rule](#choose-the-id-rule)
+      - [EXISTING RULE, but new language](#existing-rule-but-new-language)
+      - [NEW RULE (not already existing)](#new-rule-not-already-existing)
+    - [Technical declaration](#technical-declaration)
+      - [Content of `creedengo-rules-specifications`](#content-of-creedengo-rules-specifications)
+      - [UPGRADE : Existing rule, but new language](#upgrade--existing-rule-but-new-language)
+      - [UPGRADE : new rule (not already existing)](#upgrade--new-rule-not-already-existing)
+    - [Install locally](#install-locally)
+  - [SECOND, usage inside `creedengo-<LANGUAGE>` repository](#second-usage-inside-creedengo-language-repository)
+    - [Local `creedengo-rules-specifications` dependency](#local-creedengo-rules-specifications-dependency)
+    - [Develop you rule](#develop-you-rule)
   - [Test your rule implementation](#test-your-rule-implementation)
-  - [Specific real test project for Python and Java plugin](#specific-real-test-project-for-python-and-java-plugin)
+    - [Specific real test project for Python and Java plugin](#specific-real-test-project-for-python-and-java-plugin)
+  - [Check `Definition Of Done` for new rule implementation](#check-definition-of-done-for-new-rule-implementation)
 - [Publish your work](#publish-your-work)
   - [Commit your code](#commit-your-code)
   - [Open pull request](#open-pull-request)
@@ -153,11 +165,11 @@ Once your local environment is running, you can pick a rule waiting to be implem
 
 Many ways to do this : 
 
-- first way : choose a rule in following tables that is ready to implement (🚀) or has to be analyzed (❓)
+- **FIRST WAY** : choose a rule in following tables that is ready to implement (🚀) or has to be analyzed (❓)
    - [Web rules](https://github.com/green-code-initiative/creedengo-rules-specifications/blob/main/RULES.md)
    - [Android (Java) rules](https://github.com/green-code-initiative/ecocode-android/blob/main/android-plugin/RULES.md)
    - [iOS (Swift) rules](https://github.com/green-code-initiative/creedengo-ios/blob/main/RULES.md)
-- second way : pick a plugin in the table bottom and check if a rule is waiting to be implemented.
+- **SECOND WAY** : pick a plugin in the table bottom and check if a rule is waiting to be implemented.
 
 | Plugin Language | Plugin Rules Ideas                                                                                                                                                                                                                                |
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -166,7 +178,7 @@ Many ways to do this :
 | HTML            | [🗃️ rule or 💡 rule-idea](https://github.com/green-code-initiative/creedengo-html/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%92%A1+rule-idea%22%2C%22%F0%9F%97%83%EF%B8%8F+rule%22+label%3A%22%F0%9F%8F%86+challenge+%F0%9F%8F%86%22)       |
 |                 |                                                                                                                                                                                                                                                   |
 
-- third way : pick a idea rule (not yet analyzed) and check if a rule is waiting to be implemented.
+- **THIRD WAY** : pick a idea rule (not yet analyzed) and check if a rule is waiting to be implemented.
 
 | Repository          | Plugin Rules Ideas                                                                                                                       |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------|
@@ -174,28 +186,83 @@ Many ways to do this :
 | creedengo-challenge | [💡 rule-idea](https://github.com/green-code-initiative/creedengo-challenge/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea) |
 |                     |                                                                                                                                          |
 
-- fourth way : check rule ideas in Kanban project board [here](https://github.com/orgs/green-code-initiative/projects/1) and select implementable (or hardly implementable) ticket, and create an issue in the right language repositoyr
-- fifth way : Go and give a hand to the [spotters team](https://github.com/green-code-initiative/creedengo-challenge/blob/main/spotters.md) who will give you some rules to implement
+- **FOURTH WAY** : check rule ideas in Kanban project board [here](https://github.com/orgs/green-code-initiative/projects/1) and select implementable (or hardly implementable) ticket, and create an issue in the right language repositoyr
+- **FIFTH WAY** : Go and give a hand to the [spotters team](https://github.com/green-code-initiative/creedengo-challenge/blob/main/spotters.md) who will give you some rules to implement
 
 **IMPORTANT** : before implementing a rule, please check if the rule is not already implemented in another language and the id already exists in `RULES.md` file or in `creedengo-rules-specifications` repository. If the rule is already implemented, please use the same id.
 
-## Check `Definition Of Done` for new rule implementation
+## FIRST, Declare the new rule / language in `creedengo-rules-specifications` repository
 
-For a new rule implementation, we strongly recommend you to follow this check-list :
+### Choose the ID rule
 
-- [ ] Check if rule doesn't exist in our referential rules list yet (`RULES.md` file of `creedengo-rules-specifications` repository)
-- [ ] Create PR on the `creedengo-rules-specifications` repository to add the new rule definition
-  - [ ] To choose the new rule id :
-    - [ ] if rule is already existing in `RULES.md` file or in `creedengo-rules-specifications` module, please use the given rule id
-    - [ ] if rule doesn't already exist in `RULES.md` file or in `creedengo-rules-specifications` module, please use a random number between 1000 and 1500 (ex : "EC1289") and use it (later, you will be asked to change it)
-  - [ ] You can use SNAPSHOT version of `creedengo-rules-specifications` during your local rule implementation to go forward
-- [ ] Implement rule in your local specific language repository with a reference to local SNAPSHOT of `creedengo-rules-specifications` (previously, install it locally with maven command)
-  - [ ] Write Unit tests (and maximize code coverage)
-  - [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
-- [ ] Create PR on the real test project to add a triggering case (check [local procedure](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/starter-pack.md#start-local-environment))
-  - [ ] WARNING Java an Python plugin : check above (`Specific real test project for Python and Java plugin`)
-- [ ] Fix potential SonarCloud issues / out-of-date warnings (report is sent after creating PR)
-- [ ] In next review step, reviewer will ask you to use a specific id rule if you have chosen a random one
+#### EXISTING RULE, but new language
+
+Use the existing rule id in `RULES.md`.
+
+#### NEW RULE (not already existing)
+
+Use a random number between 1000 and 1500 (ex : "GCI1289") and use it for your code.
+Later, during PR reviewing process, you will be asked to change it.
+
+### Technical declaration
+
+#### Content of `creedengo-rules-specifications`
+
+In `creedengo-rules-specifications` repository, here is the content :
+- each rule is declared inside directory `src/main/rules` with following requirements :
+  - one directory for each rule (ex : `GCI1289`)
+    - JSON root file (ex : `GCI1289.json`) : contains SonarQube metadata
+    - one sub-directory per language (ex : `python`)
+      - ASCIIDOC file (ex : `GCI1289.asciidoc`) : description of rule to be displayed into Sonar
+
+#### UPGRADE : Existing rule, but new language
+
+In `creedengo-rules-specifications` repository, declare the new language :
+- inside the rule directory present in `src/main/rules` (ex : `GCI1289`) :
+  - add a new sub-directory for new language (ex : `python`)
+  - in the new language sub-directory, add the ASCIIDOC file (ex : `GCI1289.asciidoc`)
+- upgrade `CHANGELOG.md`
+
+#### UPGRADE : new rule (not already existing)
+
+In `creedengo-rules-specifications` repository, declare the new rule :
+- add the new rule in directory `src/main/rules` with following requirements :
+  - one directory for each rule
+    - create the directory if new rule (ex : `GCI1289`)
+    - upgrade the existing rule directory as follows
+  - inside the rule directory (ex : `GCI1289`)
+    - add the JSON root file (containing SonarQube metadata) (ex : `GCI1289.json`)
+    - one sub-directory per language
+      - create the directory for the new langugage (ex : `python`)
+      - add the ASCIIDOC file (description of rule to be displayed into Sonar) (ex : `GCI1289.asciidoc`)
+- upgrade `CHANGELOG.md`
+
+### Install locally
+
+In order to be used in your plugin, you have to install locally your `creedengo-rules-specifications` compoent, because it is used as a dependency in the plugin.
+Inside `creedengo-rules-specifications` repository directory, launch the following command : `mvn install`.
+This will install locally the `creedengo-rules-specifications` component in your local maven repository with a SNAPSHOT version. You can see this version in the result console.
+Now you can set this version inside de `pom.xml`of your plugin project.
+
+## SECOND, usage inside `creedengo-<LANGUAGE>` repository
+
+### Local `creedengo-rules-specifications` dependency
+
+Once your `creedengo-rules-specifications` component is installed locally (please see previous section), you can use it inside your plugin repository :
+- inside `pom.xml`, upgrade the version of the dependency `creedengo-rules-specifications` to use your SNAPSHOT version installed locally
+- launch a build of the project
+
+Your plugin is ready to use the new rule for your plugin.
+
+### Develop you rule
+
+You can use an existing example (implementation class) and add your own one.
+
+Inside your plugin project, you can now :
+- add a new rule implementation class (and use the `@Rule` annotation ti use the new rule)
+- declare this implementation class in the system
+- add a new unit test class with at minimum a compliant and an non compliant use case
+- add a new integration test with the same minimum (`GCIRuleIT` class) for Java an python plugins : please see section under
 
 ## Test your rule implementation
 
@@ -205,7 +272,7 @@ For a new rule implementation, we strongly recommend you to follow this check-li
 > Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, PHP and JAVA) in order to test directly inside Sonarqube that the rule has been implemented.
 > To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: <https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/>
 
-## Specific real test project for Python and Java plugin
+### Specific real test project for Python and Java plugin
 
 These two plugins doesn't have a specific test project yet in a separated repository.
 We are deploying in all plugins, a new system to make real tests based on integration tests inside each plugin.
@@ -225,6 +292,25 @@ You can find this new real tests system inside `src/it` directory :
   - system source-code
   - the only one integration test that will be used to launch the integration tests : `GCIRulesIT.java`
 - sub-directory `test-projects` contains the real test projects (the old one that was in a separated repository)
+
+## Check `Definition Of Done` for new rule implementation
+
+For a new rule implementation, we strongly recommend you to follow this check-list :
+
+- [ ] Check if rule doesn't exist in our referential rules list yet (`RULES.md` file of `creedengo-rules-specifications` repository)
+- [ ] Create PR on the `creedengo-rules-specifications` repository to add the new rule definition
+  - [ ] To choose the new rule id :
+    - [ ] if rule is already existing in `RULES.md` file or in `creedengo-rules-specifications` module, please use the given rule id
+    - [ ] if rule doesn't already exist in `RULES.md` file or in `creedengo-rules-specifications` module, please use a random number between 1000 and 1500 (ex : "GCI1289") and use it (later, you will be asked to change it)
+  - [ ] You can use SNAPSHOT version of `creedengo-rules-specifications` during your local rule implementation to go forward
+- [ ] Implement rule in your local specific language repository with a reference to local SNAPSHOT of `creedengo-rules-specifications` (previously, install it locally with maven command)
+  - [ ] Write Unit tests (and maximize code coverage)
+  - [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
+- [ ] Create PR on the real test project to add a triggering case (check [local procedure](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/starter-pack.md#start-local-environment))
+  - [ ] WARNING Java an Python plugin : check above (`Specific real test project for Python and Java plugin`)
+- [ ] Fix potential SonarCloud issues / out-of-date warnings (report is sent after creating PR)
+- [ ] In next review step, reviewer will ask you to use a specific id rule if you have chosen a random one
+
 
 # Publish your work
 
