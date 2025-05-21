@@ -1,0 +1,64 @@
+name: Check Requirements
+
+on:
+  push:
+    branches: *
+  pull_request:
+    branches: *
+  workflow_dispatch:
+
+jobs:
+  check-requirements:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4
+      with:
+        maven-version: '3.9.9'
+
+    - name: Install Docker
+      uses: docker/setup-buildx-action@v3
+
+    - name: Install Docker Compose
+      run: |
+        $ProgressPreference = 'SilentlyContinue'
+        Invoke-WebRequest -Uri "https://github.com/docker/compose/releases/download/v2.24.5/docker-compose-windows-x86_64.exe" -OutFile "docker-compose.exe"
+        Move-Item -Path "docker-compose.exe" -Destination "C:\Program Files\Docker\docker-compose.exe" -Force
+
+    - name: Install jq
+      run: |
+        $ProgressPreference = 'SilentlyContinue'
+        Invoke-WebRequest -Uri "https://github.com/jqlang/jq/releases/download/jq-1.7/jq-win64.exe" -OutFile "jq.exe"
+        Move-Item -Path "jq.exe" -Destination "C:\Program Files\jq\jq.exe" -Force
+        $env:Path += ";C:\Program Files\jq"
+
+    - name: Create config.txt
+      run: |
+        @"
+# debug mode on/off
+DEBUG=0
+# versions
+JAVA_VERSION_MIN=17.0.0
+JAVA_VERSION_MAX=17.0.999
+MAVEN_VERSION_MIN=3.5.2
+MAVEN_VERSION_MAX=3.9.9
+"@ | Out-File -FilePath "tools/check_requirements/config.txt" -Encoding ASCII
+
+    - name: Run requirements check
+      run: |
+        cd tools/check_requirements
+        .\check_requirements.bat
+        if ($LASTEXITCODE -ne 0) {
+          Write-Error "Requirements check failed"
+          exit 1
+        } 

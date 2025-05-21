@@ -1,2 +1,45 @@
-.*
-!.gitignore
+# Ignore everything
+*
+
+# Don't ignore directories
+!*/
+
+# Don't ignore .github directory and its contents
+!.github/
+!.github/**
+!.github/workflows/
+!.github/workflows/**
+
+# Don't ignore specific files
+!README.md
+!LICENSE
+!*.bat
+!*.sh
+!*.yml
+!*.yaml
+!*.md
+!*.txt
+!*.properties
+!*.xml
+!*.json
+!*.java
+!*.kt
+!*.gradle
+!*.gradle.kts
+!build.gradle
+!settings.gradle
+!pom.xml
+!config.txt
+
+# Ignore IDE specific files
+.idea/
+*.iml
+.vscode/
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.settings/
+*.swp
+*.swo
+.DS_Store
