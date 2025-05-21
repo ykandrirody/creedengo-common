@@ -19,7 +19,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: 'maven'
+        cache: 'none'
 
     - name: Set up Maven
       uses: stCarolas/setup-maven@v4
