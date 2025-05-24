@@ -1,37 +1,11 @@
-# Ignore everything
-*
+# Build outputs
+build/
+out/
+target/
+bin/
+*.class
 
-# Don't ignore directories
-!*/
-
-# Don't ignore .github directory and its contents
-!.github/
-!.github/**
-!.github/workflows/
-!.github/workflows/**
-
-# Don't ignore specific files
-!README.md
-!LICENSE
-!*.bat
-!*.sh
-!*.yml
-!*.yaml
-!*.md
-!*.txt
-!*.properties
-!*.xml
-!*.json
-!*.java
-!*.kt
-!*.gradle
-!*.gradle.kts
-!build.gradle
-!settings.gradle
-!pom.xml
-!config.txt
-
-# Ignore IDE specific files
+# IDE files
 .idea/
 *.iml
 .vscode/
@@ -40,6 +14,41 @@
 .project
 .classpath
 .settings/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
 *.swp
 *.swo
-.DS_Store
+*.tmp
+*.log
+
+# Dependencies
+node_modules/
+.gradle/
+.mvn/
+
+# Compiled files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Keep source files
+!*.java
+!*.kt
+!*.gradle
+!*.gradle.kts
+!*.xml
+!*.properties
+!*.json
+!*.yml
+!*.yaml
+!*.md
+!*.txt
+!*.sh
+!*.bat
